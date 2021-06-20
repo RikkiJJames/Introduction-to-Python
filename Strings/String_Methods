@@ -1,8 +1,19 @@
 x = "Hello World"
 
 print(len(x))
+#11
+
 print(x.upper())
+#HELLO WORLD
+
 print(x.lower())
+#hello world
+
 print(x.split())
+#["Hello", "World"]
+
 print(x.split("r"))
+#["Hello Wo" , "ld"]
+
 print(x)
+#Hello World
