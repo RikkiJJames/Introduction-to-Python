@@ -28,6 +28,27 @@
      * [Sets](#sets)
      * [Booleans](#booleans)   
    * [Comparison Operators](#comparison-operators)
+     * [Chaining Comparison Operators/Logical Operators](#chaining-comparison-operatorslogical-operators)
+   * [Python Statements](#python-statements)
+     * [if, elif and else Statements](#if-elif-and-else-statements)
+     * [for Loops](#for-loops)
+       * [Iterating Through Lists](#iterating-through-lists)
+       * [Iterating Through Strings](#iterating-through-strings)
+       * [Tuple Unpacking](#tuple-unpacking)
+       * [Iterating Through Dictionaries](#iterating-through-dictionaries)
+     * [while Loops](#while-loops)
+     * [break, continue and pass](#break-continue-and-pass)
+       * [break](#break)
+       * [continue](#continue)
+       * [pass](#pass)
+     * [Useful Operators](#useful-operators)
+       * [range](#range)
+       * [enumerate](#enumerate)
+       * [zip](#zip)
+       * [in](#in)
+       * [Mathematical Functions](#mathematical-functions)
+     * [List Comprehensions](#list-comprehensions)    
+   * [Methods & Functions](#methods--functions)
 
  ### Section 1 - Objects & Data Structures
 
@@ -537,3 +558,540 @@ type(b)
 ```
 
 #### Comparison Operators
+
+| Operator | Description | Example|
+| :--: | :--: | :--:|
+| == | Returns true if values are equal  | (a==b) is not true|
+| !=| Returns true is values are not equal | (a!=b) is true|
+| >| Returns true is the value on the left is greater than the right| (2 > 1) is true |
+| < | Returns true is the value on the left is less than the right | (2 < 1) is not true|
+| >= | Returns true is the value on the left is greater or equal to the  right| (1 >= 2) is not true|
+| <= | Returns true is the value on the left is less than or equal to the  right| (1 <= 2) is true|
+
+```python
+
+2 == 2
+#True
+
+"Hello" == "Bye"
+#False
+"Bye" == "bye"
+#False
+
+"2" == 2
+#False
+
+2.0 == 2
+#True
+
+3 != 3
+#False
+
+4 != 5
+#True
+```
+
+##### Chaining Comparison Operators/Logical Operators
+
+Logical operators (and/or/not) can be used to combine comparisons
+
+```python
+1 < 2 < 3
+#True
+1 < 2 and 2 < 3
+#True
+
+1 < 2 > 3
+#False
+1 < 2 and 2 > 3
+#False
+
+1 == 1 or 2 == 2
+#True
+
+100 == 1 or 2 == 2
+#True
+
+1 == 1
+#True
+
+not (1 == 1)
+#False
+'''Returns the opposite boolean'''
+
+not 400 > 5000
+True
+```
+
+#### Python Statements
+
+##### if, elif and else Statements
+
+When programming we sometimes only want certain sections of code to execute when a particular condition has been met. These can be done with the if,elif and else. Python uses colons and indentation (4 spaces).
+
+```python
+if some_condition:
+    # execute some code
+elif some_other_condition:
+    # do something different
+else:
+    # do something else
+```
+
+An example can be found below:
+
+```python
+
+name = "Rikki"
+
+if name == "Rikki":
+    print("Hello Rikki!")
+elif name == "Jocelyn":
+    print("Hello Jocelyn")
+else:
+    print("What is your name?")
+```
+
+##### for Loops
+
+for loops allow you to iterate over every element in an object. Such as an element in a list or character in a string.
+
+###### Iterating Through Lists
+
+```python
+my_iterable = [1,2,3]
+
+for item_name in my_iterable:
+    print(item_name)
+#1
+#2
+#3
+```
+Some examples can be seen below:
+
+```python
+my_list = [1,2,3,4,5,6,7,8,9,10]
+
+for num in my_list:
+    print(num)
+#prints 1-10
+for num in my_list:
+    if num % 2 == 0:
+        print(num)
+#prints even numbers
+
+list_sum = 0
+
+for num in my_list:
+    list_sum += num
+    
+print(list_sum)
+#55
+```
+
+###### Iterating Through Strings
+
+```python
+for letter in "Hello World:
+    print(letter)
+
+#Prints each character in the string "Hello World"
+
+for _ in "Hello World:
+    print("Cool!")
+
+#Prints Cool the same number of times there are character in the string "Hello World"
+```
+
+###### Tuple Unpacking
+
+
+```python
+tuple = (1,2,3)
+
+for item in tup:
+    print(item)
+#Prints 1-3
+
+my_list = [(1,2),(3,4),(5,6),(7,8)]
+len(my_list)
+#4
+
+for item in my_list:
+    print(item)
+'''
+(1,2)
+(3,4)
+(5,6)
+(7,8)
+'''
+
+for (a,b) in my_list:
+    print(a)
+    print(b)
+'''
+1
+2
+3
+4
+5
+6
+7
+8
+'''
+
+my_list = [(1,2,3),(4,5,6),(7,8,9)]
+
+for a,b,c in my_list:
+    print (b)
+'''
+2
+5
+8
+'''
+```
+
+###### Iterating Through Dictionaries
+
+```python
+d = {"k1":1,"k2":2,"k3":3}
+for item in d:
+    print (item)
+'''
+k1
+k2
+k3
+'''
+
+for item in d.items():
+    print (item)
+'''
+("k1",1)
+("k2",2)
+("k3",3)
+
+for key,value in d.items():
+    print (value)
+'''
+1
+2
+3
+'''  
+```
+
+##### while Loops
+
+while loops continue to execute a block of code *while* a condition remains *True*.
+
+```python
+while some_boolean_codition:
+    #do something
+else:
+    #do something else
+```
+
+Some more examples can be seen below:
+
+```python
+x = 0
+
+while x < 5:
+   print(f"The current value of x is {x}")
+   x += 1
+else:
+    print("X is not less than 5")
+'''
+The current value of x is 0
+The current value of x is 1
+The current value of x is 2
+The current value of x is 3
+The current value of x is 4
+X is not less than 5
+'''
+```
+
+##### break, continue and pass
+
+The break, continue and pass keywords add additional functionality for loop use cases
+
+* break: Breaks out of the current closest enclosing loop.
+* continue: Goes to the top of the closest enclosing loop.
+* pass: Does nothing.
+
+###### break
+
+```python
+for letter in my_string:
+    if letter == "i":
+        break
+    print(letter)
+#R
+
+x = 0
+
+while x < 5:
+    if x == 2:
+    break
+    print(x)
+    x += 1
+    
+'''
+0
+1
+'''
+```
+
+###### continue
+
+```python
+
+my_string = "Rikki"
+
+for letter in my_string:
+    if letter == "i":
+        continue
+    print(letter)
+'''
+R
+k
+k
+'''
+```
+
+###### pass
+```python
+
+x = [1,2,3]
+
+for item in x:
+    #Any typical comment
+# Results in an "EOF while parsing error"
+
+for item in x:
+    pass
+# Runs without an error
+```
+
+##### Useful Operators
+
+###### range
+
+```python
+
+for num in range (10):
+    print(num)
+#prints 0-9
+
+for num in range (3,10):
+    print(num)
+#prints 3-9
+
+for num in range (0,11),2:
+    print(num)
+#prints even numbers from 0-10
+
+my_list = list(range(0,11,2))
+#my_list contains even numbers from 0-10
+```
+###### enumerate
+
+```python
+index_count = 0
+
+for letter in "abcde":
+    print(f"At index {index_count} the letter is {letter}"
+    index_count += 1
+
+index_count = 0
+word = "abcde"
+
+for letter in word:
+    print(word[index_count])
+    index_count += 1
+'''
+a
+b
+c
+d
+e
+'''
+
+for item in enumerate(word):
+    print(item)
+'''
+(0,"a")
+(1,"b")
+(2,"c")
+(3,"d")
+(4,"e")
+'''
+for index,letter in enumerate(word):
+    print(index)
+    print(letter)
+    print("\n")
+'''
+0
+a
+
+1
+b
+
+2
+c
+
+3
+d
+
+4
+e
+```
+
+###### zip
+
+
+```python
+
+my_list1 = [1,2,3]
+my_list2 = ["a","b","c"]
+
+for item in zip(my_list1,my_list2):
+    print(item)
+'''
+(1, "a")
+(2, "b")
+(3, "c")
+'''
+
+my_list3 = [100,200,300]
+
+for item in zip(my_list1,my_list2,my_list3):
+    print(item)
+'''
+(1, "a", 100)
+(2, "b", 200)
+(3, "c", 300)
+'''
+
+my_list1 = [1,2,3,4,5,6]
+for item in zip(my_list1,my_list2,my_list3):
+    print(item)
+'''
+(1, "a", 100)
+(2, "b", 200)
+(3, "c", 300)
+'''
+#Zips to the length of the shortest list
+
+list(zip(my_list1,my_list2)
+#[(1, "a"),(2, "b"),(3, "c")]
+```
+
+###### in
+
+```python
+
+"x" in [1,2,3]
+False
+
+"x" in ["x","y","z"]
+#True
+
+"a" in "a world"
+#True
+
+"mykey" in {"mykey1":345,"mykey2":678}
+#True
+
+d = {"mykey1":345,"mykey2":678}
+
+345 in d.values()
+#True
+
+345 in d.keys()
+#True
+```
+
+###### Mathematical Functions
+
+```python
+my_list [10,20,30,40,500]
+
+min(my_list)
+#10
+
+max(my_List)
+#100
+```
+
+Other libraries can be imported:
+
+```
+from random import shuffle
+
+my_list = [1,2,3,4,5,6,7,8,9,10]
+shuffle(my_list)
+
+my_list
+#[3,1,2,6,5,4,8,10,9,7]
+
+from random import randint
+
+randint(0,100)
+#79
+
+randint(0,100)
+#99
+
+my_num = rand(0,10)
+```
+
+###### input
+
+```python
+result = input("Enter a number")
+#Always accepts results as a string
+
+float(result)
+int(result)
+
+result = int(input("Enter a number"))
+```
+
+##### List Comprehensions
+
+A unique way to quickly create lists. If a list is being created with a loop statement and *append()*, list comprehensions are a good alternative.
+
+```python
+
+my_string = "hello"
+
+my_list = []
+
+for letter in my_string:
+    my_list.append(letter)
+
+my_list
+#["h","e","l","l","0"]
+
+my_list = [letter for letter in my_string]
+
+my_list = [x for x in "word"]
+#["w","o","r","d"]
+
+my_list = [num for num in range(0,11)]
+#[0,1,2,3,4,5,6,7,8,9,10]
+
+my_list = [num**2 for num in range(0,11)]
+#[0,1,4,9,16,25,36,49,64,81,100]
+
+my_list = [x for x in range(0,11) if x%2 == 0]
+#[0,2,4,6,8,10]
+
+celcius = [0,10,20,34.5]
+
+fahrenheit = [( (9/5)*temp + 32) for temp in celcius]
+
+fahrenheit
+#[32.0,50.0,68.0,94.1]
+```
+#### Methods & Functions
