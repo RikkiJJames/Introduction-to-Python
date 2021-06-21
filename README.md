@@ -11,19 +11,23 @@
      * [Slicing](#slicing)
      * [String Properties & Methods](#string-properties--methods)
      * [String Formatting For Printing](string-formatting-for-printing)
-     * [.format method](#format-method)
-     * [Float Formatting](#float-formatting)
+       * [.format method](#format-method)
+         * [Float Formatting](#float-formatting)
      * [f-strings](#f-strings)
    * [Data Structures](#data-structures)
-     * [Lists](#lists)  
-     * [Declaring Variables](#declaring-variables)
-     * [Variable Scope](#variable-scope)
-
-###### .format method
-###### Float Formatting
- #### f-strings
- #### Data Structures
- ##### Lists
+     * [Lists](#lists)
+       * [Creating Lists](#creating-lists)
+       * [Modifying Lists](#modifying-lists)
+       * [Rearranging Lists](#rearranging-lists)
+     * [Dictionaries](#dictionaries)
+       * [Creating Dictionaries](#creating-dictionaries)
+       * [Modifying Dictionaries](#modifying-dictionaries)
+       * [Reviewing Dictionaries](#reviewing-dictionaries)
+     * [Tuples](#tuples)
+       * [Tuples Immutability](#tuples-immutability)
+     * [Sets](#sets)
+     * [Booleans](#booleans)   
+   * [Comparison Operators](#comparison-operators)
 
  ### Section 1 - Objects & Data Structures
 
@@ -276,7 +280,7 @@ print("The {b} {r} {h}".format(r = "red",b = "big",h = "house"))
 #The big red house
 ```
  
-###### Float Formatting
+####### Float Formatting
 
 Float formatting allows you to adjust the precision of a floating point number and follows {value:width.precision f}. A width greater than 1 increases whitespace.
 
@@ -287,7 +291,7 @@ result = 100/777
 
 print("The result was {r:1.3f}".format(r = result))
 ```
- #### f-strings
+ ##### f-strings
  
  ```python
  
@@ -304,3 +308,232 @@ print("The result was {r:1.3f}".format(r = result))
  #### Data Structures
  
  ##### Lists
+ 
+Lists are ordered sequences that can be used to hold a variety of objects.They use [] and commas to seperate objects in the list e.g. [1,2,3,4,5]. Lists also support indexing and slicing, can be nested and have a variety of useful methods.
+ 
+###### Creating Lists
+
+ ```python
+ 
+ my_list = [1,2,3]
+ 
+ my_list2 = ["String",102,25,6]
+ 
+ len(my_list)
+ #3
+ 
+ my_list[0]
+ #1
+ 
+ my_list[1:0]
+ #[2,3]
+ ```
+ 
+ ###### Modifying Lists
+ 
+ ```python
+ another_list = [4,5]
+ 
+ new_list = my_list + another_list
+ #[1,2,3,4,5]
+ 
+ new_list[0] = "ONE"
+ 
+ new_list
+ #["ONE",2,3,4,5]
+ 
+ new_list.append(6)
+ #["ONE",2,3,4,5,6]
+ 
+ popped_iten = new_list.pop()
+ #6
+ 
+ new_list
+ #["ONE",2,3,4,5]
+ 
+ new_pop = new_list.pop(0)
+ #"ONE"
+ ```
+ ###### Rearranging Lists
+ 
+ ```python
+ new_list
+ #[2,3,4,5]
+
+ new_list = ["a","e","x,"b","c"]
+ num_list = [4,1,8,3]
+ 
+ new_list.sort()
+ #["a","b","c,"e","x"]
+ 
+ num_list.sort()
+ sorted_list = num_list
+ #[1,3,4,8]
+ 
+ num_list.reverse()
+ #[8,4,3,1]
+```
+
+##### Dictionaries
+
+Dictionaries are unordered mappings for storing objects, as such they cannot be sorted. They use key-value pairs to grab objects without needing to know an index location. Dictionaires use curly braces and colons to signify the keys and their associated values.{"key1":"value1","key2":"value2"}. 
+
+
+###### Creating Dictionaries
+
+```python
+
+my_dict = {"key1":"value1","key2":"value2"}
+
+my_dict
+#{"key1":"value1","key2":"value2"}
+
+my_dict["key1"]
+#"value2"
+
+prices_lookup = {"apple":1.99,"oranges":1.50,"milk":2.50}
+prices_lookup["apple"]
+#1.99
+
+d = {"k1":123,"k2":[9,8,7],"k3":{"inside_key":100}}
+
+d["k2]
+#[9,8,7]
+
+d["k2][2]
+#7
+
+d["k3"]
+#{"inside_key":100}
+
+d["k3"]["inside_key]
+#100
+
+d= {"key1":["a","b","c"]}
+
+my_list = d["key1"]
+
+letter = my_list[2]
+letter.upper()
+#C
+
+# Can do all operations in one step
+d["key1"][2].upper()
+```
+
+###### Modifying Dictionaries
+
+```python
+d = {"k1":100,"k2":200}
+d["k3"] = 300
+#{"k1":100,"k2":200,"k3":300}
+
+d["k1] = "New Value"
+#{"k1":"New Value,"k2":200,"k3":300}
+```
+
+###### Reviewing Dictionaries
+
+```python
+d = {"k1":100,"k2":200}
+
+d.keys()
+#["k1","k2"]
+
+d.values()
+#[100,200]
+
+d.items()
+
+[("k1",100),("k2,200)]
+```
+
+##### Tuples
+
+Tuples are very similar to lists. However they are immutible, therefore once inside a tuple it cannot be reassigned. Tuples use parenthesis: (1,2,3).
+
+```python
+
+t = (1,2,3)
+type(t)
+#tuple
+
+len(t)
+#3
+
+t = ("one", 2, 3)
+
+t[0]
+#"one"
+
+t[-1]
+#3
+
+t = ("a","a",b")
+t.count("a")
+#count
+
+'''Returns first occurance of "a"'''
+t.index("a")
+#0
+
+t.index("b")
+#2
+```
+
+###### Tuples Immutability
+
+```python
+
+my_list = [1,2,3]
+my_list[0] = "NEW"
+#["NEW",2,3]
+
+t = (1,2,3)
+t[0] = "New"
+#TypeError
+```
+
+##### Sets
+
+Sets are unordered collections of unique elements. There can only be one representation of the same object.
+
+```python
+
+my_set = set()
+
+my_set.add(1)
+#{1}
+
+my_set.add(2)
+#{1,2}
+
+my_set.add(2)
+#{1,2}
+
+my_list = [1,2,2,1,2,3,4,4,4,5,3,2,1,2]
+set(mylist)
+#{1,2,3,4,5}
+'''sets are not ordered'''
+```
+
+##### Booleans
+
+Booleans are True or False operators. 
+
+
+```python
+
+1 > 2
+#False
+
+1 == 1
+#True
+
+'''None can be used as a placeholder'''
+b = None
+type(b)
+#None
+```
+
+#### Comparison Operators
