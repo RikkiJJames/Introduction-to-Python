@@ -6,10 +6,24 @@
  * [Section 1 - Objects & Data Structures](#section-1---objects--data-structures)
    * [Numbers](#numbers)
    * [Variables](#variables)
-     * [Datatypes](#datatypes)
+   * [Strings](#strings)
+     * [Indexing](#indexing)
+     * [Slicing](#slicing)
+     * [String Properties & Methods](#string-properties--methods)
+     * [String Formatting For Printing](string-formatting-for-printing)
+     * [.format method](#format-method)
+     * [Float Formatting](#float-formatting)
+     * [f-strings](#f-strings)
+   * [Data Structures](#data-structures)
+     * [Lists](#lists)  
      * [Declaring Variables](#declaring-variables)
      * [Variable Scope](#variable-scope)
 
+###### .format method
+###### Float Formatting
+ #### f-strings
+ #### Data Structures
+ ##### Lists
 
  ### Section 1 - Objects & Data Structures
 
@@ -180,3 +194,113 @@ my_name[::-1]
 ```
 
 ##### String Properties & Methods
+
+Strings in Python are immutable. Therefore indexing cannot be used to change individual elements of a string
+
+To reassign a string, a new one must be created. Concatenation can also be used to make a change to the string.
+
+```python
+
+name = "Vikki"
+
+last_letters = name[1:]
+#"ikki"
+"R" + last_letters
+#"Rikki"
+```
+
+The multiplication sign can also be used to carry out multiple concatenations
+
+```python
+
+letter = "z"
+letter * 10 
+#zzzzzzzzzz
+```
+
+Be aware when concatenating a number with a string
+
+
+``` python
+
+2 +3 
+#5
+
+"2" + "3"
+#"23"
+```
+
+There are various built in string methods. Some methods act "in-place" and do not affect the actual variable and would need to be reassigned e.g x = x.upper().
+
+| Method name | Description | Example | Place |
+| :--: | :--: | :--: | :--: |
+|.len(x) | prints length of string | 11 | in-place |
+|.upper()| makes entire string upper case | "HELLO WORLD" | in-place |
+|.lower() | makes entire string lower case | "hello world" | in-place |
+|.split() or .split("r")| creates a list from a string | ["Hello", "World"] / ["Hello Wo", "ld"] | in-place |
+
+Examples on how to use each function can be found [here](Strings/String_Methods)
+
+
+##### String Formatting For Printing
+
+The are times when you want to insert a variable into a string to print also known as string interpolation, for example:
+
+```python
+
+my_name = "Rikki"
+
+print("Hello " + my_name)
+#Hello Rikki
+```
+
+However, there are many methods to do this, mainly the .format() method and f-strings (formatted string literals).
+
+###### .format method
+
+```python
+
+print("This is a string {}".format("INSERTED"))
+#This is a string INSERTED
+
+print("The {} {} {}".format("red","big","house"))
+#"The red big house
+
+print("The {1} {0} {2}".format("red","big","house"))
+#The big red house
+
+print("The {0} {0} {0}".format("red","big","house"))
+#The red red red
+
+print("The {b} {r} {h}".format(r = "red",b = "big",h = "house"))
+#The big red house
+```
+ 
+###### Float Formatting
+
+Float formatting allows you to adjust the precision of a floating point number and follows {value:width.precision f}. A width greater than 1 increases whitespace.
+
+
+```python
+result = 100/777
+#0.1287001287001287
+
+print("The result was {r:1.3f}".format(r = result))
+```
+ #### f-strings
+ 
+ ```python
+ 
+ name = "Rikki"
+ 
+ print(f"Hello, my name is {name}")
+ #Hello, my name is Rikki
+ 
+ age = 25
+ 
+ print(f"{Rikki} is {age} years old.")
+ ```
+ 
+ #### Data Structures
+ 
+ ##### Lists
