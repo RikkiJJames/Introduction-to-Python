@@ -1509,3 +1509,180 @@ my_circle.get_circumference
 ```
 
 ##### Inheritance 
+
+Inheritance works by creating classes using existing classes.
+
+```python
+
+class Animal():
+    
+    def __init__(self):
+        print("Animal created")
+        
+    def who_am_i(self):
+        print("I am an animal")
+        
+    def eat(self):
+        print("I am eating")
+
+my_animal = Animal()
+#Animal created
+
+class Dog(Animal):
+    
+    def __init__(self):
+        Animal.__init__(self)
+        print("Dog created")
+
+    def who_am_i(self):
+        print("I am a dog!")
+        
+    def bark(self):
+        print("WOOF!)
+        
+my_dog.eat()
+#I am eating
+my_dog.who_am_i()
+#I am a dog
+```
+
+##### Polymorphism
+
+Polymorphism refers to different object classes using the same method name and can be called from the same place depending on the arguments passed in.
+
+
+```python
+
+class Dog():
+    
+    def __init__(self,name):
+        self.name = name
+        
+    def speak(self):
+        return self.name + " says woof!"
+
+class Cat():
+    
+    def __init__(self,name):
+        self.name = name
+        
+    def speak(self):
+        return self.name + " says meow!"
+
+niko = Dog("Niko")
+felix = Cat("Felix")
+
+print(niko.speak())
+print(felix.speak())
+
+
+for pet in [niko,felix]:
+    print(type(pet))
+    print(pet.speak())
+'''
+<class '__main__.Dog'>
+Niko says woof!
+<class '__main__.Cat'>
+Felix says meow!
+'''    
+
+def pet_speak(pet):
+    print(pet.speak())
+    
+pet_speak(nico)
+pet_speak(felix)
+'''
+Niko says woof!
+Felix says meow!
+'''
+```
+
+##### Abstract Classes
+
+```python
+class Animal():
+
+    def __init__(self,name):
+        self.name = name
+        
+    def speak(self):
+        raise NotImplementedError("Subclass must implement this abstract method")
+        
+class Dog(Animal):
+    
+    def speak(self):
+        return self.name + " says woof!"
+
+class Cat(Animal):
+    
+    def speak(self):
+        return self.name + " says meow!"
+        
+fido = Dog("Fido")
+shiba = Cat("Shiba")
+
+print(fido.speak())
+print(shiba.speak())
+```
+
+##### Special/Magic/Dunder Method
+
+###### print/__str__
+
+```python
+
+class Book():
+
+    def __init__(self,title,author,pages):
+    
+        self.title = title
+        self.author = author
+        self.pages = pages
+    
+    def __str__(self):
+        return f"{self.title} by {self.author}"
+    
+b = Book("Python Rocks","Rikki",200)
+print(b)
+#Python Rocks by Rikki
+```
+
+###### len
+
+```python
+class Book():
+
+    def __init__(self,title,author,pages):
+    
+        self.title = title
+        self.author = author
+        self.pages = pages
+    
+    def __len__(self):
+        return self.pages
+    
+b = Book("Python Rocks","Rikki",200)
+len(b)
+#200
+```
+
+###### del
+
+```python
+
+class Book():
+
+    def __init__(self,title,author,pages):
+    
+        self.title = title
+        self.author = author
+        self.pages = pages
+    
+    def __del__(self):
+        print("A book object has been deleted")
+    
+b = Book("Python Rocks","Rikki",200)
+
+del b
+#A book object has been deleted
+```
