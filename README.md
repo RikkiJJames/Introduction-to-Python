@@ -49,6 +49,33 @@
        * [Mathematical Functions](#mathematical-functions)
      * [List Comprehensions](#list-comprehensions)    
    * [Methods & Functions](#methods--functions)
+     * [Methods](#methods)
+     * [Functions](#functions)
+       * [Default Values](#default-values)
+       * [Functions WIth Logic](#functions-with-logic)
+       * [Tuple Unpacking With Functions](#tuple-unpacking-with-functions)
+       * [Interactions Between Functions](#interactions-between-functions)
+       * [\*args and \**kwargs in Functions](#args-and--kwargs-in-functions)
+       * [\*args](#args)  
+       * [\**kwargs](kwargs#)
+       * [\*args and \**kwargs](#args-and--kwargs)
+     * [Lambda Expressions, Maps & Filter](#lambda-expressions-maps--filter)
+        * [map](#map)
+        * [filter](#filter) 
+        * [Lambda Expressions](#lambda-expressions)
+        * [Lambda Expressions With maps](#lambda-expressions-with-maps)
+        * [Lambda Expressions With filters](#lambda-expressions-with-filters)
+
+##### Methods
+
+
+##### Lambda Expressions, Maps & Filter
+###### map
+###### filter
+###### Lambda Expressions
+###### Lambda Expressions With maps
+###### Lambda Expressions With filters
+#### Object Orientated Programming
 
  ### Section 1 - Objects & Data Structures
 
@@ -1095,3 +1122,297 @@ fahrenheit
 #[32.0,50.0,68.0,94.1]
 ```
 #### Methods & Functions
+
+##### Methods
+
+Methods are built into objects
+
+```python
+my_list = [1,2,3]
+
+my_list.append(4)
+
+my_list.pop()
+
+my_list
+```
+You can often create the object place a "." and then press tab to see all available methods. Another way is to use the built in help function.
+
+```python
+my_list = [1,2,3]
+
+help(my_list)
+
+help(my_list.insert) 
+```
+
+##### Functions
+
+Functions allow blocks of code to be executed without needing to rewrite it and can be defined using the *def* keyword.
+
+```python
+def name_of_function(name):
+    '''
+    Docstring explaining function
+    '''
+    print(f"Hello {name}")
+
+name_of_function("Rikki")
+#Hello Rikki
+```
+
+Typically the return keyword is used to send back the result of the function instead of printing it out. This allows the output of the function to be assigned to a new variable.
+
+```python
+def add_function(num1,num2):
+    return num1 + num2
+    
+result = add_function(1,2)
+print(result)
+#3
+```
+
+###### Default Values
+
+```python
+
+def say_hello(name = "Default"):
+    print(f"Hello {name}")
+    
+say_hello()
+#Hello Default
+```
+
+###### Functions With Logic
+
+
+```python
+def even_check(number):
+    return number % 2 == 0
+
+even_check(10)
+#True
+
+even_check(21)
+#false
+
+def check_even_list(num_list):
+    '''
+    Return true if any number is even inside a list
+    '''
+    for number in num_list:
+        if number % 2 == 0:
+            return True
+        else:
+            pass
+    return False
+
+check_even_list([1,3,5)]
+#False
+check_even_list([2,4,5])
+#True
+```
+
+
+```python
+def check_even_list(num_list):
+    '''
+    Returns even numbers in a list
+    '''
+    even_numbers = []
+    
+    for number in num_list:
+        if number % 2 == 0:
+            even_numbers.append(number)
+        else:
+            pass
+    return even_numbers
+```
+
+###### Tuple Unpacking With Functions
+
+```python
+stock_prices = [("Apple",200),("Google",400),("Microsoft",100)]
+
+for stock,price in stock_prices:
+    print(price + (0.1*price))
+'''
+220.0
+440.0
+110.0
+'''
+
+work_hours = [("Abby",40),("Billy",45),("Cassie",39)]
+
+def employee_check(work_hours):
+    current_max = 0
+    employee_of_month = ""
+    
+    for employee,hours in work_hours:
+        if hours > current_max:
+            current_max = hours
+            employee_of_month = employee
+        else:
+            pass
+    return (employee_of_month,current_max)
+    
+name,hours = emmployee_check(work_hours)
+
+name
+#Billy
+
+hours
+#45
+```
+
+###### Interactions Between Functions
+
+Typically outputs from one function are used as an input for another. Functions were used to design the game 3 cup monte which can be found [here](functions/interactions_between_functions)
+
+###### \*args and \** kwargs in Functions
+
+\*args and \** kwargs stand for arguments and keyword arguments and are used when passing an arbitrary number of arguments into a function.
+
+###### \*args
+
+Return a tuple
+
+```python
+
+def my_func(a,b):
+    #Returns 5% of the sum of a and b
+    
+    return sum((a,b)) * 0.05
+
+my_func(40,60)
+#5
+#Only takes 2 argumnets
+
+def my_func(*args):
+    return sum(args) * 0.05
+
+my_func(40,60,40,20,50,70,80)
+```
+args is an arbitrary word and does not have to be used. However, it is convention but determining factor is the star.
+
+###### \**kwargs
+
+return a dictionary
+
+```python
+
+def my_func(**kwargs):
+    if "fruit" in kwargs:
+        print(f"My fruit of choice is {kwargs['fruit']}")
+    else:
+        print("I did not find any fruit here")
+        
+my_func(fruit = "apple",veggie = "lettuce")
+My fruit of choice is apple
+```
+
+kargs is an arbitrary word and does not have to be used. However, it is convention but determining factor is the double star.
+
+###### *\*args and \** kwargs
+
+```python
+def my_func(*args,**kwargs):
+    print(f"I would like {args[0]} {kwargs['food']}")
+
+my_func(10,20,30,fruit = "orange", food = "eggs", animal = "dog")
+#I would like 10 eggs
+```
+
+
+#### Lambda Expressions, Maps & Filter
+
+##### map
+
+Applies a function to each element in an iterable e.g list
+
+```python
+
+def square(num):
+     return num**2
+
+my_nums = [1,2,3,4,5]
+
+for item in map(square,ny_nums):
+    print(item)
+'''
+1
+4
+9
+16
+25
+'''
+
+new_list =list(map(square,my_nums))
+new_list
+#[1, 4, 9, 16, 25]
+```
+
+```python
+
+def splicer(my_string):
+    if len(my_string) % 2 == 0:
+        return "EVEN"
+    else:
+        return my_string[0]
+        
+names = ["Rikki","George", "James"]
+
+new_list = list(map(splicer,names))
+
+print(new_list)
+#['R', 'EVEN', 'J']
+```
+
+##### filter
+
+Filter by a function that returns either true or false
+
+```python
+
+def check_even(num):
+    return num % 2 == 0
+
+my_nums = [1,2,3,4,5,6]
+
+new_list = list(filter(check_even,my_nums))
+#[2,4,6]
+```
+
+##### Lambda Expressions
+
+```python
+
+square = lambda num: num ** 2
+
+square(5)
+#25
+```
+
+##### Lambda Expressions With maps
+```python
+my_nums = [1,2,3,4,5]
+new_list = list(map(lambda num: num**2, my_nums))
+new_list
+#[1, 4, 9, 16, 25]
+
+names = ["Rikki","George", "James"]
+new_list = list(map(lambda name:name[0],names))
+#["R","G","J"]
+new_list = list(map(lambda name:name[::-1],names))
+#["ikkiR","egroeG","semaJ"]
+```
+
+##### Lambda Expressions With filters
+
+```python
+my_nums = [1,2,3,4,5]
+new_list = list(filter(lambda num: num % 2 == 0, my_nums))
+[2,4]
+```
+
+#### Object Orientated Programming
