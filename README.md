@@ -1416,3 +1416,96 @@ new_list = list(filter(lambda num: num % 2 == 0, my_nums))
 ```
 
 #### Object Orientated Programming
+
+Object Orientated Programming (OOP) allows you to create your own objects that have methods and attributes. Methods act as functions that use information about the object to return results or modify the current object. Examples include, appending to a list or counting occurences using a tuple.
+
+In general, OOP allows the production of code that is repeatable and organised. The convention is to use CamelCasing.
+
+```python
+
+class NameOfClass():
+
+    def __init__(self,param1,param2):
+        self.param1 = param1
+        self.param2 = param2
+
+    def some_method(self):
+        # perform an action
+        print(self.param1)
+```
+
+###### Attributes and class
+
+```python
+class Dog():
+    def __init__(self,breed,name,spots):
+        self.breed = breed
+        self.name = name
+        self.spots = spots
+        
+my_dog = Dog(breed = "Lab", name = "Flapjack", spots = False)
+
+my_dog.breed
+#Lab
+```
+
+###### Class Object Attributes
+
+```python
+class Dog():
+
+    #Class Object Attributes are the same for any instance of a class
+    species = "mammal"
+    
+    def __init__(self,breed,name,spots):
+        self.breed = breed
+        self.name = name
+        self.spots = spots
+
+my_dog = Dog(breed = "Lab", name = "Flapjack", spots = False)
+
+my_dog.species
+#mammal
+```
+
+###### Methods
+
+```
+class Dog():
+
+    #Class Object Attributes are the same for any instance of a class
+    species = "mammal"
+    
+    def __init__(self,breed,name):
+        self.breed = breed
+        self.name = name
+        
+    #Operations/Actions ---> Methods
+    
+    def bark(self,number):
+        print(f"Woof! my name is {self.name} and the number is {number}")
+
+my_dog = Dog("Lab","Flapjack")
+
+my_dog.bark(7)
+Woof! my name is Flapjack and the number is 7
+```
+
+```
+class Circle():
+
+    pi = 3.14
+    
+    def __init__(self,radius = 1):
+        self.radius = radius
+        self.area = radius*radius*Circle.pi
+        
+    def get_circumference(self):
+        return self.radius * 2 * self.pi
+
+my_circle = Circle()
+my_circle.get_circumference
+#
+```
+
+##### Inheritance 
