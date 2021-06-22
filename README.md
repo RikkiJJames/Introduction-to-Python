@@ -1470,7 +1470,7 @@ my_dog.species
 
 ###### Methods
 
-```
+```python
 class Dog():
 
     #Class Object Attributes are the same for any instance of a class
@@ -1491,7 +1491,7 @@ my_dog.bark(7)
 Woof! my name is Flapjack and the number is 7
 ```
 
-```
+```python
 class Circle():
 
     pi = 3.14
