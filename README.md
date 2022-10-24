@@ -12,7 +12,7 @@
      * [String Properties & Methods](#string-properties--methods)
      * [String Formatting For Printing](string-formatting-for-printing)
        * [.format method](#format-method)
-         * [Float Formatting](#float-formatting)
+         * [Float Formatting](#float-formatting) 
      * [f-strings](#f-strings)
    * [Data Structures](#data-structures)
      * [Lists](#lists)
@@ -65,17 +65,6 @@
         * [Lambda Expressions](#lambda-expressions)
         * [Lambda Expressions With maps](#lambda-expressions-with-maps)
         * [Lambda Expressions With filters](#lambda-expressions-with-filters)
-
-##### Methods
-
-
-##### Lambda Expressions, Maps & Filter
-###### map
-###### filter
-###### Lambda Expressions
-###### Lambda Expressions With maps
-###### Lambda Expressions With filters
-#### Object Orientated Programming
 
  ### Section 1 - Objects & Data Structures
 
